@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1e1e2f, #2d2d44);
+    }
+
+    .calculator {
+      width: 320px;
+      background: #1c1c1c;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .display {
+      background: #0d0d0d;
+      color: #fff;
+      font-size: 2.8rem;
+      text-align: right;
+      padding: 20px 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      min-height: 80px;
+      overflow-x: auto;
+      letter-spacing: 1px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      height: 65px;
+      border-radius: 14px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: white;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* Number buttons */
+    .btn-number {
+      background: #333;
+    }
+    .btn-number:hover {
+      background: #444;
+    }
+
+    /* Operator buttons */
+    .btn-operator {
+      background: #ff9500;
+    }
+    .btn-operator:hover {
+      background: #ffaa33;
+    }
+
+    /* Clear / special buttons */
+    .btn-clear {
+      background: #a5a5a5;
+      color: #000;
+    }
+    .btn-clear:hover {
+      background: #c0c0c0;
+    }
+
+    /* Zero button (double width) */
+    .btn-zero {
+      grid-column: span 2;
+    }
+
+    /* Equals button */
+    .btn-equal {
+      background: #ff9500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <div class="display">0</div>
+
+    <div class="buttons">
+      <button class="btn-clear">AC</button>
+      <button class="btn-clear">±</button>
+      <button class="btn-clear">%</button>
+      <button class="btn-operator">÷</button>
+
+      <button class="btn-number">7</button>
+      <button class="btn-number">8</button>
+      <button class="btn-number">9</button>
+      <button class="btn-operator">×</button>
+
+      <button class="btn-number">4</button>
+      <button class="btn-number">5</button>
+      <button class="btn-number">6</button>
+      <button class="btn-operator">−</button>
+
+      <button class="btn-number">1</button>
+      <button class="btn-number">2</button>
+      <button class="btn-number">3</button>
+      <button class="btn-operator">+</button>
+
+      <button class="btn-number btn-zero">0</button>
+      <button class="btn-number">.</button>
+      <button class="btn-equal">=</button>
+    </div>
+  </div>
+
+</body>
+</html>
