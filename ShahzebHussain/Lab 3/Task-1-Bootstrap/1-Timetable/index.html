@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BSCS-V-B (Shift-I) Timetable</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-body-tertiary">
+  <div class="container-xl py-4">
+
+    <!-- Header -->
+    <header class="d-flex flex-wrap align-items-end justify-content-between gap-2 mb-3">
+      <div>
+        <span class="badge text-bg-dark mb-2">Uni</span>
+        <h1 class="display-6 mb-0">BSCS-V-B <span class="text-body-secondary fs-4">(Shift-I)</span></h1>
+      </div>
+      <div class="d-flex gap-2 d-print-none">
+        <span class="badge rounded-pill text-bg-primary align-self-center">Lecture</span>
+        <span class="badge rounded-pill text-bg-warning align-self-center">Lab (3 hrs)</span>
+        <button class="btn btn-outline-dark btn-sm" onclick="window.print()"><i class="bi bi-printer"></i> Print</button>
+      </div>
+    </header>
+
+    <!-- Timetable -->
+    <div class="card shadow-sm">
+      <div class="table-responsive">
+        <table class="table table-bordered align-top text-center mb-0 timetable">
+          <thead class="table-dark">
+            <tr>
+              <th class="day-col"></th>
+              <th>08:00am-09:00am<small>8:00 - 9:00</small></th>
+              <th>09:00am-10:00am<small>9:00 - 10:00</small></th>
+              <th>10:00am-11:00am<small>10:00 - 11:00</small></th>
+              <th>11:00am-12:00pm<small>11:00 - 12:00</small></th>
+              <th>12:00pm-01:00pm<small>12:00 - 1:00</small></th>
+              <th>01:00pm-02:00pm<small>1:00 - 2:00</small></th>
+              <th>02:00pm-03:00pm<small>2:00 - 3:00</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Monday -->
+            <tr>
+              <th class="day-col table-light">Mo</th>
+              <td></td>
+              <td><span class="teacher">CS-Mr Hafiz Obiad Ullah Khan</span><span class="subject">Full Stack Web Development</span><span class="badge text-bg-primary">C-205 (Shift-I)</span></td>
+              <td><span class="teacher">Maths-Dr Waqas Sarwar Abbasi</span><span class="subject">Linear Algebra</span><span class="badge text-bg-primary">C-301 (Shift-I)</span></td>
+              <td colspan="3" class="table-warning lab"><span class="teacher">CS-Ms Kanwal Ejaz</span><span class="subject">Artificial Intelligence Lab</span><span class="badge text-bg-warning">Lab 5 A Block (Shift-I)</span></td>
+              <td><span class="teacher">CS-Ms Warda Aslam</span><span class="subject">Operating Systems</span><span class="badge text-bg-primary">C-301 (Shift-I)</span></td>
+            </tr>
+
+            <!-- Tuesday -->
+            <tr>
+              <th class="day-col table-light">Tu</th>
+              <td><span class="teacher">CS-Ms Warda Aslam</span><span class="subject">Operating Systems</span><span class="badge text-bg-primary">C-206 (Shift-I)</span></td>
+              <td><span class="teacher">CS-Mr Hafiz Obiad Ullah Khan</span><span class="subject">Full Stack Web Development</span><span class="badge text-bg-primary">C-301 (Shift-I)</span></td>
+              <td><span class="teacher">AUSOM-Ms Ayesha Munir-VFM</span><span class="subject">Introduction to Management</span><span class="badge text-bg-primary">C-206 (Shift-I)</span></td>
+              <td></td>
+              <td></td>
+              <td><span class="teacher">Maths-Dr Waqas Sarwar Abbasi</span><span class="subject">Linear Algebra</span><span class="badge text-bg-primary">C-205 (Shift-I)</span></td>
+              <td class="table-info"><span class="teacher">CS-Ms Kanwal Ejaz</span><span class="subject">Advisory Class</span><span class="badge text-bg-info">C-201 (Shift-I)</span></td>
+            </tr>
+
+            <!-- Wednesday -->
+            <tr>
+              <th class="day-col table-light">We</th>
+              <td></td>
+              <td><span class="teacher">CS-Dr Mehdi Hassan<br>CS-Mr Muhammad Junaid Nazar</span><span class="subject">Design and Analysis of Algorithms</span><span class="badge text-bg-primary">Lecture Hall 01</span></td>
+              <td><span class="teacher">CS-Dr Mehdi Hassan<br>CS-Mr Muhammad Junaid Nazar</span><span class="subject">Design and Analysis of Algorithms</span><span class="badge text-bg-primary">Lecture Hall 01</span></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><span class="teacher">CS-Ms Kanwal Ejaz</span><span class="subject">Artificial Intelligence</span><span class="badge text-bg-primary">C-205 (Shift-I)</span></td>
+            </tr>
+
+            <!-- Thursday -->
+            <tr>
+              <th class="day-col table-light">Th</th>
+              <td></td>
+              <td><span class="teacher">CS-Dr Mehdi Hassan / CS-Mr Muhammad Junaid Nazar</span><span class="subject">Design and Analysis of Algorithms</span><span class="badge text-bg-primary">Lecture Hall 01</span></td>
+              <td><span class="teacher">CS-Dr Mehdi Hassan / CS-Mr Muhammad Junaid Nazar</span><span class="subject">Design and Analysis of Algorithms</span><span class="badge text-bg-primary">Lecture Hall 01</span></td>
+              <td colspan="3" class="table-warning lab"><span class="teacher">CS-Ms Warda Aslam</span><span class="subject">Operating Systems Lab</span><span class="badge text-bg-warning">Lab 13 C Block (3rd Floor) (Shift-I)</span></td>
+              <td><span class="teacher">CS-Ms Kanwal Ejaz</span><span class="subject">Artificial Intelligence</span><span class="badge text-bg-primary">C-302 (Shift-I)</span></td>
+            </tr>
+
+            <!-- Friday -->
+            <tr>
+              <th class="day-col table-light">Fr</th>
+              <td></td>
+              <td><span class="teacher">AUSOM-Ms Ayesha Munir-VFM</span><span class="subject">Introduction to Management</span><span class="badge text-bg-primary">C-203 (Shift-I)</span></td>
+              <td><span class="teacher">Maths-Dr Waqas Sarwar Abbasi</span><span class="subject">Linear Algebra</span><span class="badge text-bg-primary">C-203 (Shift-I)</span></td>
+              <td colspan="3" class="table-warning lab"><span class="teacher">CS-Mr Hafiz Obiad Ullah Khan</span><span class="subject">Full Stack Web Development Lab</span><span class="badge text-bg-warning">Lab 5 A Block (Shift-I)</span></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer small text-body-secondary">Timetable generated: 03/09/2026</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>(3) Facebook</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar navbar-expand sticky-top bg-body border-bottom px-3">
+    <div class="container-fluid px-0 gap-3">
+      <a class="navbar-brand logo me-0" href="#">facebook</a>
+
+      <form class="flex-grow-1 mx-lg-auto search" role="search">
+        <div class="input-group">
+          <span class="input-group-text rounded-start-pill border-0 bg-body-secondary"><i class="bi bi-search"></i></span>
+          <input class="form-control rounded-end-pill border-0 bg-body-secondary shadow-none" type="search" placeholder="Search Facebook">
+        </div>
+      </form>
+
+      <div class="d-flex align-items-center gap-2">
+        <a href="#" class="btn btn-sm rounded-pill find-btn d-none d-md-inline-block">Find friends</a>
+        <button class="btn btn-secondary rounded-circle icon-btn position-relative" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Messenger">
+          <i class="bi bi-messenger"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
+        </button>
+        <div class="dropdown">
+          <button class="btn btn-secondary rounded-circle icon-btn position-relative" data-bs-toggle="dropdown" aria-label="Notifications">
+            <i class="bi bi-bell-fill"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">5</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow" style="width: 300px;">
+            <li><h6 class="dropdown-header">Notifications</h6></li>
+            <li><a class="dropdown-item text-wrap" href="#"><b>Moiz Baig</b> tagged you in a photo at Daman-e-Koh.</a></li>
+            <li><a class="dropdown-item text-wrap" href="#"><b>Air University Coders</b> posted a new poll.</a></li>
+            <li><a class="dropdown-item text-wrap" href="#">You have a memory with 4 friends.</a></li>
+          </ul>
+        </div>
+        <span class="avatar me-av">SK</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-xxl">
+    <div class="row g-4 justify-content-center">
+
+      <!-- ============ ICON RAIL ============ -->
+      <nav class="col-auto d-none d-lg-flex flex-column align-items-center gap-2 py-3 rail">
+        <a href="#" class="btn btn-rail active" data-bs-toggle="tooltip" data-bs-placement="right" title="Home"><i class="bi bi-house-door-fill"></i></a>
+        <a href="#" class="btn btn-rail" data-bs-toggle="tooltip" data-bs-placement="right" title="Friends"><i class="bi bi-people-fill"></i></a>
+        <a href="#" class="btn btn-rail" data-bs-toggle="tooltip" data-bs-placement="right" title="Reels"><i class="bi bi-film"></i></a>
+        <a href="#" class="btn btn-rail" data-bs-toggle="tooltip" data-bs-placement="right" title="Marketplace"><i class="bi bi-shop"></i></a>
+        <a href="#" class="btn btn-rail" data-bs-toggle="tooltip" data-bs-placement="right" title="Groups"><i class="bi bi-globe2"></i></a>
+        <a href="#" class="btn btn-rail" data-bs-toggle="tooltip" data-bs-placement="right" title="Saved"><i class="bi bi-bookmark-fill"></i></a>
+        <hr class="w-75 my-1">
+        <a href="#" class="avatar grp a1" data-bs-toggle="tooltip" data-bs-placement="right" title="Air University Coders">AC</a>
+        <a href="#" class="avatar grp a2" data-bs-toggle="tooltip" data-bs-placement="right" title="Islamabad Tech Meetups">IT</a>
+        <a href="#" class="avatar grp a3" data-bs-toggle="tooltip" data-bs-placement="right" title="BSCS Fall 2024">B24</a>
+      </nav>
+
+      <!-- ============ FEED ============ -->
+      <main class="col-12 col-md-8 col-lg-6 py-3">
+        <ul class="nav nav-pills mb-3 gap-1">
+          <li class="nav-item"><a class="nav-link rounded-pill active" href="#">For you</a></li>
+          <li class="nav-item"><a class="nav-link rounded-pill" href="#">Friends</a></li>
+          <li class="nav-item"><a class="nav-link rounded-pill" href="#">Groups</a></li>
+          <li class="nav-item"><a class="nav-link rounded-pill" href="#">Pages</a></li>
+        </ul>
+
+        <!-- composer -->
+        <div class="card mb-3">
+          <div class="card-body d-flex align-items-center gap-2">
+            <span class="avatar me-av">SK</span>
+            <input type="text" class="form-control rounded-pill bg-body-secondary border-0" placeholder="What's on your mind, Shahzaib?">
+            <div class="btn-group">
+              <button class="btn btn-link text-success fs-5 px-2" title="Photo"><i class="bi bi-image"></i></button>
+              <button class="btn btn-link text-primary fs-5 px-2" title="Tag"><i class="bi bi-tag-fill"></i></button>
+              <button class="btn btn-link text-warning fs-5 px-2" title="Feeling"><i class="bi bi-emoji-smile-fill"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- reels -->
+        <div class="card mb-3">
+          <div class="card-header bg-transparent d-flex justify-content-between align-items-center border-0 pt-3">
+            <h6 class="mb-0"><i class="bi bi-film text-danger"></i> Reels</h6>
+            <a href="#" class="small link-primary text-decoration-none">See all</a>
+          </div>
+          <div class="card-body pt-0">
+            <div class="d-flex gap-2 overflow-x-auto pb-2 reels">
+              <div class="reel r1"><span class="badge bg-dark bg-opacity-50"><i class="bi bi-play-fill"></i> 12K</span><p>POV: your code works on the first try</p></div>
+              <div class="reel r2"><span class="badge bg-dark bg-opacity-50"><i class="bi bi-play-fill"></i> 88K</span><p>Margalla Hills sunrise hike 🌄</p></div>
+              <div class="reel r3"><span class="badge bg-dark bg-opacity-50"><i class="bi bi-play-fill"></i> 4.1K</span><p>CSS Grid in 60 seconds</p></div>
+              <div class="reel r4"><span class="badge bg-dark bg-opacity-50"><i class="bi bi-play-fill"></i> 230K</span><p>Best biryani in Islamabad?</p></div>
+              <div class="reel r5"><span class="badge bg-dark bg-opacity-50"><i class="bi bi-play-fill"></i> 9K</span><p>Semester 5 be like…</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- photo post -->
+        <article class="card mb-3">
+          <div class="card-body pb-2">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="avatar a1">MB</span>
+              <div class="lh-sm flex-grow-1">
+                <div><b>Moiz Baig</b> is at <b>Daman-e-Koh</b></div>
+                <small class="text-body-secondary">3 hrs · <i class="bi bi-globe-americas"></i></small>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-link text-body-secondary" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#"><i class="bi bi-bookmark me-2"></i>Save post</a></li>
+                  <li><a class="dropdown-item" href="#"><i class="bi bi-eye-slash me-2"></i>Hide post</a></li>
+                </ul>
+              </div>
+            </div>
+            <p class="mb-2">Weekend trip with the squad 🏔️ Islamabad never disappoints.</p>
+          </div>
+          <div class="row g-1 px-0 mx-0">
+            <div class="col-6"><div class="ph ph1"></div></div>
+            <div class="col-6"><div class="ph ph2"></div></div>
+            <div class="col-6"><div class="ph ph3"></div></div>
+            <div class="col-6"><div class="ph ph4 d-flex align-items-center justify-content-center"><span class="display-6 fw-bold">+6</span></div></div>
+          </div>
+          <div class="card-body pt-2">
+            <div class="d-flex justify-content-between small text-body-secondary border-bottom pb-2">
+              <span>❤️👍 You and 311 others</span><span>54 comments</span>
+            </div>
+            <div class="d-flex pt-1">
+              <input type="checkbox" class="btn-check" id="like1" autocomplete="off">
+              <label class="btn btn-act flex-fill" for="like1"><i class="bi bi-hand-thumbs-up"></i> Like</label>
+              <button class="btn btn-act flex-fill"><i class="bi bi-chat"></i> Comment</button>
+              <button class="btn btn-act flex-fill"><i class="bi bi-send"></i> Send</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- poll post -->
+        <article class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="avatar a2">AC</span>
+              <div class="lh-sm flex-grow-1">
+                <b>Air University Coders</b><br>
+                <small class="text-body-secondary">Group · 1 day · <i class="bi bi-people-fill"></i></small>
+              </div>
+            </div>
+            <p>Quick poll: which framework should our next workshop cover? 🗳️</p>
+
+            <div class="poll d-grid gap-2" id="poll">
+              <div class="poll-opt">
+                <input type="radio" class="btn-check" name="poll" id="p1">
+                <label class="btn btn-outline-secondary text-start w-100 position-relative overflow-hidden" for="p1">
+                  <span class="fill" style="--p: 46%"></span><span class="position-relative">React</span><span class="pct">46%</span>
+                </label>
+              </div>
+              <div class="poll-opt">
+                <input type="radio" class="btn-check" name="poll" id="p2">
+                <label class="btn btn-outline-secondary text-start w-100 position-relative overflow-hidden" for="p2">
+                  <span class="fill" style="--p: 31%"></span><span class="position-relative">Next.js</span><span class="pct">31%</span>
+                </label>
+              </div>
+              <div class="poll-opt">
+                <input type="radio" class="btn-check" name="poll" id="p3">
+                <label class="btn btn-outline-secondary text-start w-100 position-relative overflow-hidden" for="p3">
+                  <span class="fill" style="--p: 15%"></span><span class="position-relative">Vue</span><span class="pct">15%</span>
+                </label>
+              </div>
+              <div class="poll-opt">
+                <input type="radio" class="btn-check" name="poll" id="p4">
+                <label class="btn btn-outline-secondary text-start w-100 position-relative overflow-hidden" for="p4">
+                  <span class="fill" style="--p: 8%"></span><span class="position-relative">Svelte</span><span class="pct">8%</span>
+                </label>
+              </div>
+              <small class="text-body-secondary">412 votes · Tap an option to vote</small>
+            </div>
+          </div>
+        </article>
+
+        <!-- memory -->
+        <article class="card mb-3 memory text-center">
+          <div class="card-header bg-transparent border-0 pt-3 small text-body-secondary"><i class="bi bi-clock-history"></i> On this day · 2 years ago</div>
+          <div class="card-body">
+            <p class="fs-5">First day at Air University! New campus, new friends, new chapter. 🎓</p>
+            <button class="btn btn-primary rounded-pill px-4">Share memory</button>
+          </div>
+        </article>
+      </main>
+
+      <!-- ============ RIGHT COLUMN ============ -->
+      <aside class="col-md-4 col-lg-3 d-none d-md-block py-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h6 class="card-title">Upcoming events</h6>
+            <div class="d-flex gap-3 align-items-center mb-3">
+              <div class="date-box text-center rounded-3"><b class="d-block fs-5 lh-1">28</b><small>SEP</small></div>
+              <div class="lh-sm"><b>Hackathon 2026</b><br><small class="text-body-secondary">Air University · 214 going</small></div>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+              <div class="date-box text-center rounded-3"><b class="d-block fs-5 lh-1">03</b><small>OCT</small></div>
+              <div class="lh-sm"><b>Google DevFest Islamabad</b><br><small class="text-body-secondary">NUST · 1.2K interested</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-body">
+            <h6 class="card-title">People you may know</h6>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item bg-transparent px-0 d-flex align-items-center gap-2">
+                <span class="avatar a3">HN</span>
+                <div class="lh-sm flex-grow-1"><b>Hira Naeem</b><br><small class="text-body-secondary">12 mutual friends</small></div>
+                <input type="checkbox" class="btn-check" id="add1"><label class="btn btn-sm btn-outline-primary" for="add1">Add</label>
+              </li>
+              <li class="list-group-item bg-transparent px-0 d-flex align-items-center gap-2">
+                <span class="avatar a4">FJ</span>
+                <div class="lh-sm flex-grow-1"><b>Fahad Javed</b><br><small class="text-body-secondary">8 mutual friends</small></div>
+                <input type="checkbox" class="btn-check" id="add2"><label class="btn btn-sm btn-outline-primary" for="add2">Add</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title">Active now <span class="badge text-bg-success rounded-pill">5</span></h6>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <button class="avatar a1 dot border-0" data-chat title="Moiz Baig">MB</button>
+              <span class="avatar a3 dot">HN</span>
+              <span class="avatar a4 dot">FJ</span>
+              <span class="avatar a5 dot">SK</span>
+              <span class="avatar a6 dot">AK</span>
+            </div>
+            <button class="btn btn-sm btn-secondary w-100" data-chat>Open chat with Moiz <i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ============ FLOATING CHAT (Bootstrap toast) ============ -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="chatToast" class="toast chat-toast" role="dialog" aria-label="Chat with Moiz" data-bs-autohide="false">
+      <div class="toast-header gap-2">
+        <span class="avatar a1 dot small-av">MB</span>
+        <div class="lh-sm me-auto"><b>Moiz Baig</b><br><small class="text-success">Active now</small></div>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body d-flex flex-column gap-2 msgs" id="msgs">
+        <p class="msg in">Bhai FSWD lab ka deadline kab hai?</p>
+        <p class="msg out">Aaj raat 11:59 tak 😅</p>
+        <p class="msg in">Done kar liya?</p>
+        <p class="msg out">Almost, bas push karna hai 🚀</p>
+      </div>
+      <form class="border-top p-2 d-flex gap-2" id="chatForm">
+        <input class="form-control form-control-sm rounded-pill bg-body-secondary border-0" placeholder="Aa" id="chatInput">
+        <button class="btn btn-sm btn-link"><i class="bi bi-send-fill"></i></button>
+      </form>
+    </div>
+  </div>
+  <button class="btn btn-secondary rounded-circle chat-fab position-fixed shadow" data-chat aria-label="New message"><i class="bi bi-pencil-square"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // tooltips
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+
+    // chat toast
+    const chat = bootstrap.Toast.getOrCreateInstance(document.getElementById('chatToast'));
+    document.querySelectorAll('[data-chat]').forEach(b => b.addEventListener('click', () => chat.show()));
+    document.getElementById('chatForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      if (!input.value.trim()) return;
+      const p = document.createElement('p');
+      p.className = 'msg out';
+      p.textContent = input.value;
+      document.getElementById('msgs').appendChild(p);
+      input.value = '';
+      p.scrollIntoView({ block: 'end' });
+    });
+
+    // poll: show results once a vote is cast
+    document.querySelectorAll('#poll input').forEach(r =>
+      r.addEventListener('change', () => document.getElementById('poll').classList.add('voted')));
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* IEEE two-column conference format (US Letter).
+   Bootstrap supplies the card, table, figure, progress bars and print utilities;
+   CSS columns and counters below give the IEEE-specific layout. */
+
+body {
+  background: repeating-linear-gradient(45deg, #e9e6df 0 12px, #e3e0d8 12px 24px);
+  font-family: "Times New Roman", Times, serif;
+  color: #000;
+  padding: 36px 12px;
+}
+
+.sheet {
+  width: 8.5in;
+  max-width: 100%;
+  min-height: 11in;
+  padding: 0.75in 0.625in 1in;
+  font-size: 10pt;
+  line-height: 1.2;
+  border-radius: 2px;
+}
+
+.paper-title { font-size: 24pt; font-weight: 400; line-height: 1.15; margin-bottom: 0.2in; }
+.au-name { font-size: 11pt; }
+
+/* two columns */
+.body-text { column-count: 2; column-gap: 0.25in; text-align: justify; hyphens: auto; counter-reset: h1; }
+.body-text p { margin-bottom: 0; }
+.body-text > p { text-indent: 1em; }
+.body-text > p.cont, .body-text > p.math { text-indent: 0; }
+.abs, .kw { font-size: 9pt; line-height: 1.15; margin-bottom: 9pt !important; text-indent: 0 !important; }
+
+/* numbered headings: I. II. III. and A. B. C. */
+.body-text h2 {
+  font-size: 10pt; font-weight: 400; font-variant: small-caps;
+  text-align: center; margin: 11pt 0 5pt;
+  counter-increment: h1; counter-reset: h2;
+  break-after: avoid-column;
+}
+.body-text h2::before { content: counter(h1, upper-roman) ". "; }
+.body-text h2.nonum { counter-increment: none; }
+.body-text h2.nonum::before { content: ""; }
+.body-text h3 {
+  font-size: 10pt; font-weight: 400; font-style: italic;
+  margin: 7pt 0 3pt; counter-increment: h2; break-after: avoid-column;
+}
+.body-text h3::before { content: counter(h2, upper-alpha) ". "; }
+
+.feat { margin: 3pt 0 4pt 18pt; padding: 0; }
+.math { margin: 5pt 0 !important; }
+
+/* table */
+.table-wrap, .figure { break-inside: avoid; }
+.tcap { font-size: 8pt; margin-bottom: 4pt; }
+.tcap span { font-variant: small-caps; }
+.ieee-table { font-size: 8pt; --bs-table-bg: transparent; }
+.ieee-table thead { border-top: 1px solid #000; border-bottom: 1px solid #000; }
+.ieee-table tbody { border-bottom: 1px solid #000; }
+.ieee-table th, .ieee-table td { padding: 2pt 3pt; }
+
+/* bar chart built from Bootstrap progress bars */
+.chart { font-size: 7.5pt; }
+.row-bar { display: grid; grid-template-columns: 52pt 1fr; align-items: center; gap: 5pt; margin-bottom: 4pt; }
+.row-bar span { text-align: right; }
+.row-bar .progress { height: 7pt; border-radius: 0; background: transparent; }
+.row-bar .progress-bar { background: repeating-linear-gradient(45deg, #000 0 1px, #fff 1px 3px); border: .75px solid #000; }
+.axis { margin-left: 57pt; padding-top: 2pt; }
+.fcap { font-size: 8pt; margin-top: 4pt; }
+
+/* references */
+.refs { counter-reset: r; font-size: 8pt; }
+.refs li { counter-increment: r; position: relative; padding-left: 20pt; margin-bottom: 3pt; break-inside: avoid; text-align: justify; }
+.refs li::before { content: "[" counter(r) "]"; position: absolute; left: 0; }
+
+@media print {
+  @page { size: 8.5in 11in; margin: 0; }
+  body { background: none; padding: 0; }
+  .sheet { box-shadow: none !important; }
+  .row-bar .progress-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+@media (max-width: 780px) {
+  .sheet { padding: 28px 18px; }
+  .body-text { column-count: 1; }
+  .paper-title { font-size: 18pt; }
+}

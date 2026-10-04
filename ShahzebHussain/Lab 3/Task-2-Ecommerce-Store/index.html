@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaarigar · Handmade in Pakistan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark"></span>Kaarigar</a>
+      <div class="d-flex align-items-center gap-2 order-lg-last">
+        <a href="cart.html" class="btn btn-outline-ink rounded-pill cart-btn" aria-label="Cart">
+          <i class="bi bi-bag"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark d-none" data-cart-count>0</span>
+        </a>
+        <div id="userMenu" class="d-none d-sm-flex align-items-center gap-1"></div>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-lg-auto gap-lg-3 mt-3 mt-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#shop">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#reviews">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="checkout.html">Checkout</a></li>
+          <li class="nav-item d-sm-none"><a class="nav-link" href="login.html">Log in / Sign up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="container py-5">
+      <div class="row align-items-center g-5 py-lg-4">
+        <div class="col-lg-6">
+          <p class="text-glaze fw-semibold mb-3"><i class="bi bi-geo-alt-fill"></i> From 8 craft towns across Pakistan</p>
+          <h1 class="mb-4">Handmade by kaarigars, delivered to your door.</h1>
+          <p class="lead text-body-secondary mb-4">Blue pottery from Multan, ajrak from Hala, chappals from Peshawar. We buy straight from the workshops, so the maker earns more and you pay less.</p>
+          <div class="d-flex flex-wrap gap-2 mb-5">
+            <a href="#shop" class="btn btn-ink btn-lg rounded-pill px-4">Shop the collection</a>
+            <a href="#reviews" class="btn btn-outline-ink btn-lg rounded-pill px-4">Read reviews</a>
+          </div>
+          <div class="row g-4 hero-stat small text-body-secondary">
+            <div class="col-auto"><b>120+</b>artisans</div>
+            <div class="col-auto"><b>4.8</b>average rating</div>
+            <div class="col-auto"><b>3–5 days</b>delivery</div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="hero-art">
+            <img src="images/ajrak.svg" class="piece p2" alt="Ajrak shawl">
+            <img src="images/vase.svg" class="piece p1" alt="Blue pottery vase">
+            <img src="images/lamp.svg" class="piece p3" alt="Camel-skin lamp">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="tile-band"></div>
+
+  <!-- ============ PRODUCT LISTING ============ -->
+  <section id="shop" class="py-5">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4">
+        <div>
+          <h2 class="mb-1">Shop the collection</h2>
+          <p class="text-body-secondary mb-0" id="resultCount">8 products</p>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <div class="input-group" style="width: 240px;">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <input type="search" class="form-control" id="search" placeholder="Search products" aria-label="Search products">
+          </div>
+          <select class="form-select" id="sort" style="width: 190px;" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-pills d-flex flex-wrap gap-2 mb-4" role="group" aria-label="Filter by category" id="filters">
+        <input type="radio" class="btn-check" name="cat" id="cat-all" value="All" checked>
+        <label class="btn btn-outline-ink rounded-pill" for="cat-all">All</label>
+        <input type="radio" class="btn-check" name="cat" id="cat-pottery" value="Pottery">
+        <label class="btn btn-outline-ink rounded-pill" for="cat-pottery">Pottery</label>
+        <input type="radio" class="btn-check" name="cat" id="cat-textiles" value="Textiles">
+        <label class="btn btn-outline-ink rounded-pill" for="cat-textiles">Textiles</label>
+        <input type="radio" class="btn-check" name="cat" id="cat-footwear" value="Footwear">
+        <label class="btn btn-outline-ink rounded-pill" for="cat-footwear">Footwear</label>
+        <input type="radio" class="btn-check" name="cat" id="cat-decor" value="Home Decor">
+        <label class="btn btn-outline-ink rounded-pill" for="cat-decor">Home Decor</label>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4" id="productGrid"></div>
+      <div class="text-center py-5 d-none" id="noResults">
+        <i class="bi bi-search fs-1 text-body-secondary"></i>
+        <p class="mt-2 mb-3">No products match your search.</p>
+        <button class="btn btn-outline-ink rounded-pill" id="clearFilters">Clear filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section id="reviews" class="py-5 bg-white border-top">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-8">
+          <h2 class="mb-1">What customers say</h2>
+          <p class="text-body-secondary mb-4" id="reviewSummary"></p>
+          <div class="row row-cols-1 row-cols-md-2 g-3" id="reviewList"></div>
+          <div class="text-center mt-4">
+            <button class="btn btn-outline-ink rounded-pill" id="moreReviews">Show more reviews</button>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card border-0 shadow-sm sticky-lg-top" style="top: 100px;">
+            <div class="card-body p-4">
+              <h3 class="h4 mb-3">Write a review</h3>
+              <div id="reviewLoginNote" class="alert alert-light border small d-none">
+                <a href="login.html?next=index.html%23reviews">Log in</a> to write a review.
+              </div>
+              <form id="reviewForm" novalidate>
+                <div class="mb-3">
+                  <label class="form-label" for="reviewProduct">Product</label>
+                  <select class="form-select" id="reviewProduct" required></select>
+                </div>
+                <div class="mb-3">
+                  <span class="form-label d-block">Your rating</span>
+                  <div class="star-input" id="starInput">
+                    <input type="radio" name="rating" id="s5" value="5" required><label for="s5" title="5 stars"><i class="bi bi-star-fill"></i></label>
+                    <input type="radio" name="rating" id="s4" value="4"><label for="s4" title="4 stars"><i class="bi bi-star-fill"></i></label>
+                    <input type="radio" name="rating" id="s3" value="3"><label for="s3" title="3 stars"><i class="bi bi-star-fill"></i></label>
+                    <input type="radio" name="rating" id="s2" value="2"><label for="s2" title="2 stars"><i class="bi bi-star-fill"></i></label>
+                    <input type="radio" name="rating" id="s1" value="1"><label for="s1" title="1 star"><i class="bi bi-star-fill"></i></label>
+                  </div>
+                  <div class="invalid-feedback" id="ratingError">Choose a rating from 1 to 5 stars.</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="reviewText">Your review</label>
+                  <textarea class="form-control" id="reviewText" rows="4" minlength="10" required placeholder="How was the quality, packaging and delivery?"></textarea>
+                  <div class="invalid-feedback">Write at least 10 characters.</div>
+                </div>
+                <button class="btn btn-ink w-100 rounded-pill" type="submit">Post review</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCT QUICK VIEW (modal) ============ -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="pmTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content border-0">
+        <div class="modal-body p-0">
+          <div class="row g-0">
+            <div class="col-md-6"><img id="pmImg" src="" alt="" class="img-fluid w-100 h-100 object-fit-cover rounded-start"></div>
+            <div class="col-md-6 p-4">
+              <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+              <p class="text-glaze fw-semibold small mb-1" id="pmOrigin"></p>
+              <h2 class="h3" id="pmTitle"></h2>
+              <div class="mb-2" id="pmRating"></div>
+              <p class="price fs-4 mb-3" id="pmPrice"></p>
+              <p class="text-body-secondary" id="pmDesc"></p>
+              <div class="d-flex gap-2 mb-4">
+                <div class="input-group qty-group">
+                  <button class="btn btn-outline-ink" type="button" data-step="-1" aria-label="Decrease">−</button>
+                  <input type="number" class="form-control" id="pmQty" value="1" min="1" max="10" aria-label="Quantity">
+                  <button class="btn btn-outline-ink" type="button" data-step="1" aria-label="Increase">+</button>
+                </div>
+                <button class="btn btn-ink rounded-pill flex-grow-1" id="pmAdd" data-qty-from="#pmQty"><i class="bi bi-bag-plus me-1"></i> Add to cart</button>
+              </div>
+              <h3 class="h6">Reviews</h3>
+              <div id="pmReviews" class="d-grid gap-2 small"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ============ FOOTER ============ -->
+  <div class="tile-band"></div>
+  <footer class="site-footer py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <h2 class="h4">Kaarigar</h2>
+          <p class="small mb-0" style="max-width: 26rem;">Handmade goods bought directly from artisans across Pakistan. Every order pays the maker first.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h3 class="h6 text-white">Shop</h3>
+          <ul class="list-unstyled small d-grid gap-1">
+            <li><a href="index.html#shop">All products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h3 class="h6 text-white">Help</h3>
+          <ul class="list-unstyled small d-grid gap-1">
+            <li><i class="bi bi-truck me-1"></i> Free delivery over Rs 5,000</li>
+            <li><i class="bi bi-cash-coin me-1"></i> Cash on delivery available</li>
+            <li><i class="bi bi-envelope me-1"></i> <a href="mailto:hello@kaarigar.pk">hello@kaarigar.pk</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <p class="small mb-0">&copy; <span id="year"></span> Kaarigar · Lab 3 project by Shahzaib Khan, BSCS-V-B</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

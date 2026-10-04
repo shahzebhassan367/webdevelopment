@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IEEE Paper: Lightweight Phishing URL Detection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- toolbar (hidden when printing) -->
+  <div class="container d-print-none mb-3" style="max-width: 8.5in;">
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="badge text-bg-dark">IEEE Conference Template · US Letter</span>
+      <button class="btn btn-sm btn-dark" onclick="window.print()"><i class="bi bi-printer"></i> Print / Save PDF</button>
+    </div>
+  </div>
+
+  <main class="card sheet border-0 shadow-lg mx-auto">
+    <section class="text-center mb-4">
+      <h1 class="paper-title">Lightweight Phishing URL Detection Using Lexical Features and Ensemble Classifiers</h1>
+      <div class="d-inline-block">
+        <p class="au-name mb-0">Shahzaib Khan</p>
+        <p class="mb-0"><em>Department of Computer Science</em></p>
+        <p class="mb-0"><em>Air University</em></p>
+        <p class="mb-0">Islamabad, Pakistan</p>
+        <p class="mb-0">shahzaib.khan@example.com</p>
+      </div>
+    </section>
+
+    <section class="body-text">
+      <p class="abs"><strong><em>Abstract</em>—Phishing websites imitate trusted brands to steal credentials, and new phishing URLs appear faster than blacklists can be updated. This paper studies whether a small set of lexical features, taken only from the URL string, is enough to detect phishing links without downloading the page. We extract 18 features such as URL length, number of dots, presence of an IP address and suspicious keywords, and compare logistic regression, a decision tree and a random forest. On a balanced dataset of 20,000 URLs, the random forest reaches 96.1% accuracy and an F1-score of 0.96 while classifying each URL in under a millisecond, which makes it suitable for browser extensions.</strong></p>
+
+      <p class="kw"><strong><em>Index Terms</em>—phishing detection, URL analysis, machine learning, random forest, cyber security</strong></p>
+
+      <h2>Introduction</h2>
+      <p>Phishing remains one of the most common entry points for cyber attacks. An attacker registers a look-alike domain, copies the login page of a bank or email provider and sends the link to victims. Blacklist-based defences only work after a URL has been reported, leaving a window in which new sites are dangerous.</p>
+      <p>Machine learning offers a proactive alternative: a model learns what phishing URLs <em>look like</em> and flags unseen ones. Content-based methods download and inspect the page, which is slow and can expose the user to malicious scripts. We therefore focus on <em>lexical</em> features that can be computed from the URL string alone.</p>
+
+      <h2>Related Work</h2>
+      <p>Ma <em>et al.</em> [1] showed that lexical and host-based URL features can separate malicious from benign sites with high accuracy. Sahingoz <em>et al.</em> [2] compared seven classifiers on natural-language features of URLs and found random forests performed best. Our study follows this line but limits itself to cheap features that run inside the browser.</p>
+
+      <h2>Methodology</h2>
+      <h3>Dataset</h3>
+      <p>We combined 10,000 phishing URLs reported to PhishTank with 10,000 legitimate URLs from popular websites, giving a balanced set. The data was split 80/20 into training and test sets with stratification.</p>
+
+      <h3>Feature Extraction</h3>
+      <p>Each URL is turned into an 18-dimensional vector. The most informative features are listed below:</p>
+      <ol class="feat">
+        <li>total URL length and hostname length;</li>
+        <li>number of dots, hyphens and “@” symbols;</li>
+        <li>use of a raw IP address instead of a domain;</li>
+        <li>presence of words such as <em>login</em>, <em>verify</em> or <em>secure</em>;</li>
+        <li>whether HTTPS is used;</li>
+        <li>Shannon entropy of the hostname.</li>
+      </ol>
+
+      <h3>Entropy Feature</h3>
+      <p>Randomly generated domains tend to have high character entropy, defined as</p>
+      <p class="math d-flex justify-content-center position-relative"><span><em>H</em> = −Σ<sub><em>c</em></sub> <em>p</em>(<em>c</em>) log<sub>2</sub> <em>p</em>(<em>c</em>)</span><span class="position-absolute end-0">(1)</span></p>
+      <p class="cont">where <em>p</em>(<em>c</em>) is the relative frequency of character <em>c</em> in the hostname.</p>
+
+      <h3>Classifiers</h3>
+      <p>We trained logistic regression (LR), a decision tree (DT) and a random forest (RF) with 100 trees [3], using the scikit-learn library [4] with default settings except for the number of trees.</p>
+
+      <h2>Results</h2>
+      <p>Table I summarises the performance on the held-out test set. The random forest gives the best balance of precision and recall.</p>
+
+      <figure class="table-wrap my-3">
+        <figcaption class="tcap text-center">TABLE I<br><span>Classification Results on the Test Set</span></figcaption>
+        <table class="table table-sm table-borderless text-center mb-0 ieee-table">
+          <thead>
+            <tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>LR</td><td>0.912</td><td>0.905</td><td>0.921</td><td>0.913</td></tr>
+            <tr><td>DT</td><td>0.938</td><td>0.934</td><td>0.943</td><td>0.938</td></tr>
+            <tr class="fw-bold"><td>RF</td><td>0.961</td><td>0.958</td><td>0.964</td><td>0.961</td></tr>
+          </tbody>
+        </table>
+      </figure>
+
+      <figure class="figure w-100 my-3">
+        <div class="chart border border-dark p-2" aria-label="Bar chart of feature importance">
+          <div class="row-bar"><span>URL length</span><div class="progress"><div class="progress-bar" style="width: 92%"></div></div></div>
+          <div class="row-bar"><span>No. of dots</span><div class="progress"><div class="progress-bar" style="width: 78%"></div></div></div>
+          <div class="row-bar"><span>Entropy</span><div class="progress"><div class="progress-bar" style="width: 71%"></div></div></div>
+          <div class="row-bar"><span>Keywords</span><div class="progress"><div class="progress-bar" style="width: 63%"></div></div></div>
+          <div class="row-bar"><span>IP address</span><div class="progress"><div class="progress-bar" style="width: 48%"></div></div></div>
+          <div class="row-bar"><span>HTTPS</span><div class="progress"><div class="progress-bar" style="width: 30%"></div></div></div>
+          <div class="axis d-flex justify-content-between border-top border-dark"><span>0</span><span>0.05</span><span>0.10</span><span>0.15</span></div>
+        </div>
+        <figcaption class="figure-caption fcap text-dark">Fig. 1. Relative feature importance in the random forest model.</figcaption>
+      </figure>
+
+      <p>Fig. 1 shows that URL length and the number of dots are the strongest signals, which matches the common attacker trick of hiding a brand name deep inside a long subdomain chain.</p>
+
+      <h2>Conclusion</h2>
+      <p>Lexical URL features alone detect phishing links with over 96% accuracy using a random forest, without fetching page content. Future work will add domain-age information and test the model as a real-time browser extension.</p>
+
+      <h2 class="nonum">References</h2>
+      <ol class="refs list-unstyled">
+        <li>J. Ma, L. K. Saul, S. Savage, and G. M. Voelker, “Beyond blacklists: Learning to detect malicious web sites from suspicious URLs,” in <em>Proc. 15th ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining</em>, 2009, pp. 1245–1254.</li>
+        <li>O. K. Sahingoz, E. Buber, O. Demir, and B. Diri, “Machine learning based phishing detection from URLs,” <em>Expert Systems with Applications</em>, vol. 117, pp. 345–357, 2019.</li>
+        <li>L. Breiman, “Random forests,” <em>Machine Learning</em>, vol. 45, no. 1, pp. 5–32, 2001.</li>
+        <li>F. Pedregosa <em>et al.</em>, “Scikit-learn: Machine learning in Python,” <em>Journal of Machine Learning Research</em>, vol. 12, pp. 2825–2830, 2011.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

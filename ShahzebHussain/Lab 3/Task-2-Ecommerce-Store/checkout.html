@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout · Kaarigar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark"></span>Kaarigar</a>
+      <div class="d-flex align-items-center gap-2 order-lg-last">
+        <a href="cart.html" class="btn btn-outline-ink rounded-pill cart-btn" aria-label="Cart">
+          <i class="bi bi-bag"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark d-none" data-cart-count>0</span>
+        </a>
+        <div id="userMenu" class="d-none d-sm-flex align-items-center gap-1"></div>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-lg-auto gap-lg-3 mt-3 mt-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#shop">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#reviews">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="checkout.html">Checkout</a></li>
+          <li class="nav-item d-sm-none"><a class="nav-link" href="login.html">Log in / Sign up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="bg-porcelain py-5" style="min-height: 70vh;">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="cart.html">Cart</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+      </nav>
+
+      <!-- empty cart -->
+      <div class="card border-0 shadow-sm text-center p-5 d-none" id="emptyCheckout">
+        <i class="bi bi-bag-x display-4 text-body-secondary"></i>
+        <h1 class="h4 mt-3">Nothing to check out</h1>
+        <p class="text-body-secondary">Your cart is empty. Add a few products first.</p>
+        <div><a href="index.html#shop" class="btn btn-ink rounded-pill px-4">Go to shop</a></div>
+      </div>
+
+      <!-- order placed -->
+      <div class="card border-0 shadow-sm p-4 p-md-5 d-none mx-auto" style="max-width: 640px;" id="orderDone">
+        <div class="text-center">
+          <span class="d-inline-grid rounded-circle bg-success-subtle text-success mb-3" style="width:72px;height:72px;place-items:center;"><i class="bi bi-check-lg fs-1"></i></span>
+          <h1 class="h3">Order placed</h1>
+          <p class="text-body-secondary mb-4">Thank you, <span id="doneName"></span>. Your order number is <b id="orderId"></b>. We'll text <span id="donePhone"></span> when it ships.</p>
+        </div>
+        <ul class="list-group list-group-flush mb-3" id="doneItems"></ul>
+        <div class="d-flex justify-content-between fw-semibold mb-4 px-3"><span>Order total <small class="fw-normal text-body-secondary" id="donePay"></small></span><span id="doneTotal"></span></div>
+        <a href="index.html" class="btn btn-ink rounded-pill">Back to store</a>
+      </div>
+
+      <div id="checkoutArea">
+        <h1 class="mb-4">Checkout</h1>
+        <form id="checkoutForm" class="row g-4" novalidate>
+          <div class="col-lg-7">
+            <!-- 1. contact -->
+            <div class="card border-0 shadow-sm mb-4">
+              <div class="card-body p-4">
+                <h2 class="h5 mb-3"><span class="badge rounded-pill text-bg-dark me-2">1</span>Contact</h2>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="fullName" class="form-label">Full name</label>
+                    <input type="text" class="form-control" id="fullName" required minlength="3" autocomplete="name">
+                    <div class="invalid-feedback">Enter the name for delivery.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label">Mobile number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="03XX-XXXXXXX" required pattern="03[0-9]{2}-?[0-9]{7}" autocomplete="tel">
+                    <div class="invalid-feedback">Use the format 03XX-XXXXXXX.</div>
+                  </div>
+                  <div class="col-12">
+                    <label for="coEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="coEmail" required autocomplete="email">
+                    <div class="invalid-feedback">Enter a valid email for your receipt.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. delivery -->
+            <div class="card border-0 shadow-sm mb-4">
+              <div class="card-body p-4">
+                <h2 class="h5 mb-3"><span class="badge rounded-pill text-bg-dark me-2">2</span>Delivery address</h2>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label for="address" class="form-label">Street address</label>
+                    <input type="text" class="form-control" id="address" placeholder="House 12, Street 4, Block B" required minlength="6" autocomplete="street-address">
+                    <div class="invalid-feedback">Enter your house and street.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="city" class="form-label">City</label>
+                    <select class="form-select" id="city" required>
+                      <option value="">Choose…</option>
+                      <option>Lahore</option>
+                      <option>Karachi</option>
+                      <option>Islamabad</option>
+                      <option>Rawalpindi</option>
+                      <option>Faisalabad</option>
+                      <option>Multan</option>
+                      <option>Peshawar</option>
+                      <option>Quetta</option>
+                      <option>Hyderabad</option>
+                      <option>Sialkot</option>
+                    </select>
+                    <div class="invalid-feedback">Choose a city.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="postal" class="form-label">Postal code</label>
+                    <input type="text" class="form-control" id="postal" pattern="[0-9]{5}" required placeholder="54000" autocomplete="postal-code">
+                    <div class="invalid-feedback">Postal codes have 5 digits.</div>
+                  </div>
+                  <div class="col-12">
+                    <label for="notes" class="form-label">Delivery notes <span class="text-body-secondary">(optional)</span></label>
+                    <textarea class="form-control" id="notes" rows="2" placeholder="Landmark, gate colour, best time to call"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. payment -->
+            <div class="card border-0 shadow-sm">
+              <div class="card-body p-4">
+                <h2 class="h5 mb-3"><span class="badge rounded-pill text-bg-dark me-2">3</span>Payment</h2>
+                <div class="d-grid gap-2 pay-option mb-3">
+                  <input type="radio" class="btn-check" name="pay" id="payCod" value="Cash on delivery" checked>
+                  <label class="btn btn-outline-secondary py-3" for="payCod"><i class="bi bi-cash-stack me-2"></i><b>Cash on delivery</b><br><small class="text-body-secondary ms-4">Pay the rider when your order arrives</small></label>
+                  <input type="radio" class="btn-check" name="pay" id="payCard" value="Card">
+                  <label class="btn btn-outline-secondary py-3" for="payCard"><i class="bi bi-credit-card me-2"></i><b>Debit / credit card</b><br><small class="text-body-secondary ms-4">Visa, Mastercard, UnionPay</small></label>
+                  <input type="radio" class="btn-check" name="pay" id="payWallet" value="JazzCash / Easypaisa">
+                  <label class="btn btn-outline-secondary py-3" for="payWallet"><i class="bi bi-phone me-2"></i><b>JazzCash / Easypaisa</b><br><small class="text-body-secondary ms-4">Approve the payment on your phone</small></label>
+                </div>
+
+                <div class="collapse" id="cardFields">
+                  <div class="row g-3 pt-1">
+                    <div class="col-12">
+                      <label for="cardNumber" class="form-label">Card number</label>
+                      <input type="text" class="form-control" id="cardNumber" inputmode="numeric" placeholder="4242 4242 4242 4242" pattern="[0-9 ]{19}" maxlength="19" autocomplete="cc-number">
+                      <div class="invalid-feedback">Enter all 16 digits.</div>
+                    </div>
+                    <div class="col-6">
+                      <label for="cardExp" class="form-label">Expiry</label>
+                      <input type="text" class="form-control" id="cardExp" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])/[0-9]{2}" maxlength="5" autocomplete="cc-exp">
+                      <div class="invalid-feedback">Use MM/YY.</div>
+                    </div>
+                    <div class="col-6">
+                      <label for="cardCvc" class="form-label">CVC</label>
+                      <input type="text" class="form-control" id="cardCvc" inputmode="numeric" placeholder="123" pattern="[0-9]{3,4}" maxlength="4" autocomplete="cc-csc">
+                      <div class="invalid-feedback">3 or 4 digits on the back.</div>
+                    </div>
+                    <p class="small text-body-secondary mb-0"><i class="bi bi-info-circle"></i> Demo store: no real payment is taken.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- summary -->
+          <div class="col-lg-5">
+            <div class="card border-0 shadow-sm summary-card">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h2 class="h5 mb-0">Your order</h2>
+                  <a href="cart.html" class="small">Edit cart</a>
+                </div>
+                <ul class="list-group list-group-flush mb-3" id="summaryItems"></ul>
+                <dl class="row mb-0">
+                  <dt class="col-7 fw-normal text-body-secondary">Subtotal</dt><dd class="col-5 text-end" id="coSubtotal"></dd>
+                  <dt class="col-7 fw-normal text-body-secondary">Delivery</dt><dd class="col-5 text-end" id="coShipping"></dd>
+                </dl>
+                <hr>
+                <div class="d-flex justify-content-between align-items-baseline mb-4">
+                  <span class="fw-semibold">Total</span><span class="price fs-4" id="coTotal"></span>
+                </div>
+                <button type="submit" class="btn btn-saffron btn-lg w-100 rounded-pill" id="placeBtn">Place order</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <!-- ============ FOOTER ============ -->
+  <div class="tile-band"></div>
+  <footer class="site-footer py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <h2 class="h4">Kaarigar</h2>
+          <p class="small mb-0" style="max-width: 26rem;">Handmade goods bought directly from artisans across Pakistan. Every order pays the maker first.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h3 class="h6 text-white">Shop</h3>
+          <ul class="list-unstyled small d-grid gap-1">
+            <li><a href="index.html#shop">All products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h3 class="h6 text-white">Help</h3>
+          <ul class="list-unstyled small d-grid gap-1">
+            <li><i class="bi bi-truck me-1"></i> Free delivery over Rs 5,000</li>
+            <li><i class="bi bi-cash-coin me-1"></i> Cash on delivery available</li>
+            <li><i class="bi bi-envelope me-1"></i> <a href="mailto:hello@kaarigar.pk">hello@kaarigar.pk</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary my-4">
+      <p class="small mb-0">&copy; <span id="year"></span> Kaarigar · Lab 3 project by Shahzaib Khan, BSCS-V-B</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
